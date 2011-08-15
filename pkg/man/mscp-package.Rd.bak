@@ -1,0 +1,57 @@
+\name{mscp-package}
+\alias{mscp-package}
+\alias{mscp}
+\docType{package}
+\title{
+Multi-Sample Changepoint Estimation
+}
+\description{
+    This package scans multiple aligned sequences for shared change-point signals.  It also does multi-sample segmentation to obtain a sparse cross-sample summary of aligned sequences. The parameter names in the functions were motivated by applications in DNA copy number analysis.
+}
+\details{
+\tabular{ll}{
+Package: \tab mscp\cr
+Type: \tab Package\cr
+Version: \tab 1.0\cr
+Date: \tab 2011-08-09\cr
+License: \tab What license is it under?\cr
+LazyLoad: \tab yes\cr
+}
+
+    
+}
+
+\examples{
+
+    # Example of using the scanning function:
+
+    data(sqcp)
+    sqcp2 = norm.snp.pc(sqcp)  # this data has significant artifacts, which we can remove by pc normalization.
+    sig = msscan(sqcp2$normed,pval=0.0001,maxwin = nrow(sqcp2$normed))
+    
+    # Example of using the segmentation function:
+
+    data(leukemia) 
+    seg=mscbs(y=leukemia,use.bic=TRUE, MIN.SNPs=5, MAX.CHPTS=30,plots=TRUE) 
+    par(mfrow=c(2,1)) 
+    heatmap(pmax(pmin(leukemia,1),-1), main="Raw", zlim=c(-1,1)) 
+    heatmap(seg$yhat,zlim=c(-1,1),main="MSCBS-BIC Fitted")
+
+}
+
+\author{
+
+Nancy R. Zhang
+
+Maintainer: Nancy R. Zhang (nzhang@stanford.edu)
+}
+\references{
+    Zhang, N.R., Siegmund, D.O., Ji, H., and Li, J., 2010, Detecting simultaneous change-points in multiple sequences. Biometrika, 97, 631--645. \cr
+    Siegmund, D.O., Yakir, B. and Zhang, N.R., 2011, Detecting simultaneous variant intervals in aligned sequences.  Annals of Applied Statistics, in press. \cr
+    Zhang, N.R. and Siegmund, D., 2011, Model Selection for High Dimensional, Multi-sequence Change-point Problems.  Submitted. \cr
+}
+
+\keyword{segmentation}
+\keyword{scan statistic}
+\keyword{change-point}
+\keyword{DNA copy number}

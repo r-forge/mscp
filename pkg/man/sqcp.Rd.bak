@@ -1,0 +1,16 @@
+\name{leukemia}
+          \docType{data}
+          \alias{leukemia}
+          \title{Example copy number data from the leukemia case study of Zhang and Siegmund (2011).}
+          \description{
+            This data set contains an example copy number data set coming from Chromosome 9p of a set of leukemia samples. 
+          }
+          \usage{leukemia}
+          \format{Rows or locations, columns are samples.
+                
+          }
+          \references{
+            Schiffman et al. (2009) Molecular inversion probes reveal patterns of 9p21 deletion and copy number
+aberrations in childhood leukemia. Cancer Genetics and Cytogenetics 193, 9-18.
+          }
+          \keyword{datasets}

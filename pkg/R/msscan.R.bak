@@ -1,0 +1,6 @@
+msscan <-
+function(y,pval,maxwin,ALPHA=0,...){
+    b = getCutoffMultisampleWeightedChisq(pval,nrow(y),1/nrow(y),maxwin,ncol(y),ALPHA)
+    fscan(y,f=c(0.01,0.1,1), ALPHA = ALPHA,b=b, verbose=TRUE)
+}
+
