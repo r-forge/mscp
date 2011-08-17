@@ -2319,7 +2319,7 @@ merge.pos<-function(pos,anchors=NULL){
 
 fscan<-function(y,b,f=NULL,rho=0.99,MIN.SNPS=1, ALPHA=0, delta=c(1,-1), 
                 use.BY.statistic=FALSE, throw.small.Z=FALSE, MIN.ABS.MEDIAN=0.2, 
-                plots.pdf="fscanplots.pdf", verbose=TRUE){
+                plots.pdf="fscanplots.pdf", verbose=FALSE){
 
 # ------------------------------------------------------ #
 # Sped up versions of scan by sequentially
@@ -2329,7 +2329,7 @@ fscan<-function(y,b,f=NULL,rho=0.99,MIN.SNPS=1, ALPHA=0, delta=c(1,-1),
   T=nrow(y)   # Number of SNPs
   N=ncol(y)   # Number of samples
 
-  cat("Starting fscan with ",T," SNPs, ",N, " samples, threshold of ",b,".\n")
+  cat("Starting fscan with ",T," SNPs, ",N, " samples, threshold of ",b,".\n", sep="")
 
   if(is.null(f)){
   # This part doesn't work very well yet, initially, set f manually, e.g. f=c(0.01,0.1,1) works well.
@@ -2487,7 +2487,8 @@ fscan<-function(y,b,f=NULL,rho=0.99,MIN.SNPS=1, ALPHA=0, delta=c(1,-1),
 
     if(verbose){
         cat("After merging, change-points found so far:\n")
-        if(length(chpts.Z)>0) print(cbind(chpts, chpts.Z), digits=1)
+        if(length(chpts.Z)>0){ print(cbind(chpts, chpts.Z), digits=1)}
+        else {cat("No change-points detected.\n")}
         cat("\n")
     }
   }

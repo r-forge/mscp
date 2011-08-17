@@ -2430,7 +2430,7 @@ fscan<-function(y,b,f=NULL,rho=0.99,MIN.SNPS=1, ALPHA=0, delta=c(1,-1),
       Z.pass = Z[Z.passinds]
       Z.pass.order =order(Z.pass,decreasing=TRUE)
       Z.pass = Z.pass[Z.pass.order]
-      Z.passinds = Z.passinds[Z.pass.order,]
+      Z.passinds = Z.passinds[Z.pass.order,,drop=FALSE]
     
       newchpts = cbind(Z.passinds[,1],Z.passinds[,1]+Z.passinds[,2])
       if(length(newchpts) == 2) newchpts =matrix(nrow=1,ncol=2,data=newchpts)
@@ -2487,7 +2487,8 @@ fscan<-function(y,b,f=NULL,rho=0.99,MIN.SNPS=1, ALPHA=0, delta=c(1,-1),
 
     if(verbose){
         cat("After merging, change-points found so far:\n")
-        if(length(chpts.Z)>0) print(cbind(chpts, chpts.Z), digits=1)
+        if(length(chpts.Z)>0){ print(cbind(chpts, chpts.Z), digits=1)}
+        else {cat("No change-points detected.\n")}
         cat("\n")
     }
   }
